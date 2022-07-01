@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Bug Tracker{% endblock %}
+{% block content %}
+
+<div name="titulo" class="d-flex p-3 justify-content-center">
+  <h1 class="p-3">Bug Tracker</h1>
+</div>
+
+<div name="painel_bug" class="d-flex p-3 justify-content-center">
+  <span class="border border-dark p-3 bg-dark">
+    <div class="d-inline flex-column">
+      <form>
+
+        <div class="form-group">
+          <label class="text-white" for="bugName">Bug name*</label>
+          <input type="bugName" class="form-control" id="inputBugName" aria-describedby="bugHelp"
+            placeholder="Bug name..">
+          <small id="bugHelp" class="form-text text-muted">Always check if there's a similar bug</small>
+        </div>
+
+        <div class="form-group">
+          <label class="text-white" for="descripton">Description*</label>
+          <textarea class="form-control col-xs-12" id="bugDescription" rows="4" cols="60"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="text-white" for="exampleInputPassword1">Image</label>
+          <input class="form-control" type="file" id="formFile" onchange="preview()">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Criar</button>
+      </form>
+    </div>
+  </span>
+</div>
+
+<script>
+  function preview() {
+    frame.src = URL.createObjectURL(event.target.files[0]);
+  }
+  function clearImage() {
+    document.getElementById('formFile').value = null;
+    frame.src = "";
+  }
+</script>
+{% endblock %}
